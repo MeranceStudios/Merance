@@ -3,29 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
 </head>
 <body>
+	<video autoplay loop muted playsinline id="bg-video" style="position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-1;"><source src="video/Background%20video.mp4" type="video/mp4"></video>
 	<header class="main-header">
 		<nav class="navbar">
-			<button class="hamburger" aria-label="Menu">
+			<button class="hamburger" id="hamburger-btn" aria-label="Open menu">
 				<span></span>
 				<span></span>
 				<span></span>
 			</button>
-			<ul class="nav-links">
-				<li><a href="#home">Home</a></li>
-			</ul>
-			<div class="dropdown-menu">
-				<a href="#shop">Shop</a>
-				<a href="#about">About Us</a>
-			</div>
 			<form class="search-form" action="#" method="get">
 				<input type="text" class="search-input" placeholder="Search..." name="search">
 				<button type="submit" class="search-btn">Search</button>
 			</form>
+			<div class="dropdown-menu" id="dropdown-menu">
+				<a href="#">Menu Item 1</a>
+				<a href="#">Menu Item 2</a>
+				<a href="#">Menu Item 3</a>
+			</div>
 		</nav>
 	</header>
 			<h1>MERANCE</h1>
@@ -35,8 +34,8 @@
 				const searchForm = document.querySelector('.search-form');
 				const searchInput = document.querySelector('.search-input');
 				const searchBtn = document.querySelector('.search-btn');
-				const hamburger = document.querySelector('.hamburger');
-				const dropdown = document.querySelector('.dropdown-menu');
+				const hamburger = document.getElementById('hamburger-btn');
+				const dropdown = document.getElementById('dropdown-menu');
 				searchInput.style.transition = 'width 0.2s cubic-bezier(.7,0,.3,1), opacity 0.2s';
 				searchInput.style.width = '0px';
 				searchInput.style.opacity = '0';
@@ -57,13 +56,14 @@
 					}, 200);
 				});
 				// Hamburger menu toggle
-				hamburger.addEventListener('click', function() {
-					dropdown.classList.toggle('show');
+				hamburger.addEventListener('click', function(e) {
+					e.stopPropagation();
+					dropdown.classList.toggle('active');
 				});
 				// Hide dropdown when clicking outside
 				document.addEventListener('click', function(e) {
 					if (!hamburger.contains(e.target) && !dropdown.contains(e.target)) {
-						dropdown.classList.remove('show');
+						dropdown.classList.remove('active');
 					}
 				});
 			});
