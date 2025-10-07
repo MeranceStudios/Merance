@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header class="main-header">
+		<nav class="navbar">
+			<button class="hamburger" aria-label="Menu">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<ul class="nav-links">
+				<li><a href="#home">Home</a></li>
+			</ul>
+			<div class="dropdown-menu">
+				<a href="#shop">Shop</a>
+				<a href="#about">About Us</a>
+			</div>
+			<form class="search-form" action="#" method="get">
+				<input type="text" class="search-input" placeholder="Search..." name="search">
+				<button type="submit" class="search-btn">Search</button>
+			</form>
+		</nav>
+	</header>
+			<h1>MERANCE</h1>
+			<script>
+			// Slide out search bar animation
+			document.addEventListener('DOMContentLoaded', function() {
+				const searchForm = document.querySelector('.search-form');
+				const searchInput = document.querySelector('.search-input');
+				const searchBtn = document.querySelector('.search-btn');
+				const hamburger = document.querySelector('.hamburger');
+				const dropdown = document.querySelector('.dropdown-menu');
+				searchInput.style.transition = 'width 0.2s cubic-bezier(.7,0,.3,1), opacity 0.2s';
+				searchInput.style.width = '0px';
+				searchInput.style.opacity = '0';
+				searchInput.style.overflow = 'hidden';
+				searchBtn.addEventListener('click', function(e) {
+					if (searchInput.style.width === '0px' || searchInput.style.opacity === '0') {
+						e.preventDefault();
+						searchInput.style.width = '160px';
+						searchInput.style.opacity = '1';
+						searchInput.focus();
+					}
+				});
+				// Optional: hide again when focus is lost
+				searchInput.addEventListener('blur', function() {
+					setTimeout(() => {
+						searchInput.style.width = '0px';
+						searchInput.style.opacity = '0';
+					}, 200);
+				});
+				// Hamburger menu toggle
+				hamburger.addEventListener('click', function() {
+					dropdown.classList.toggle('show');
+				});
+				// Hide dropdown when clicking outside
+				document.addEventListener('click', function(e) {
+					if (!hamburger.contains(e.target) && !dropdown.contains(e.target)) {
+						dropdown.classList.remove('show');
+					}
+				});
+			});
+			</script>
+		<script>
+		// Slide out search bar animation
+		document.addEventListener('DOMContentLoaded', function() {
+			const searchForm = document.querySelector('.search-form');
+			const searchInput = document.querySelector('.search-input');
+			const searchBtn = document.querySelector('.search-btn');
+			searchInput.style.transition = 'width 0.2s cubic-bezier(.7,0,.3,1), opacity 0.2s';
+			searchInput.style.width = '0px';
+			searchInput.style.opacity = '0';
+			searchInput.style.overflow = 'hidden';
+			searchBtn.addEventListener('click', function(e) {
+				if (searchInput.style.width === '0px' || searchInput.style.opacity === '0') {
+					e.preventDefault();
+					searchInput.style.width = '160px';
+					searchInput.style.opacity = '1';
+					searchInput.focus();
+				}
+			});
+			// Optional: hide again when focus is lost
+			searchInput.addEventListener('blur', function() {
+				setTimeout(() => {
+					searchInput.style.width = '0px';
+					searchInput.style.opacity = '0';
+				}, 200);
+			});
+		});
+		</script>
+</body>
+</html>
 
