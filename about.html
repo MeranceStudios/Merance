@@ -10,11 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
 </head>
 <body>
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="Home%20page/video/Background%20video.mp4" type="video/mp4">
+    </video>
     <header class="main-header">
         <nav class="navbar">
             <ul class="nav-links">
+                <li class="nav-item shop-item">
+                    <button id="shopToggle" class="nav-button" aria-haspopup="true" aria-expanded="false">Shop ▾</button>
+                    <div id="shopDropdown" class="dropdown-menu" role="menu" aria-label="Shop submenu">
+                        <a href="Shop/New Arrivals.html" role="menuitem">New Arrivals</a>
+                        <a href="Shop/collection.html" role="menuitem">Collections</a>
+                        <a href="Shop/sale.html" role="menuitem">Sale</a>
+                    </div>
+                </li>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
                 <li><a href="about.html">About Us</a></li>
             </ul>
             <form class="search-form" action="#" method="get">
@@ -22,6 +32,29 @@
                 <button type="submit">Search</button>
             </form>
         </nav>
+        <script>
+            // Toggle Shop dropdown on click, close on outside click or Escape
+            (function(){
+                const toggle = document.getElementById('shopToggle');
+                const dropdown = document.getElementById('shopDropdown');
+
+                function setOpen(open){
+                    dropdown.classList.toggle('active', open);
+                    toggle.setAttribute('aria-expanded', String(!!open));
+                }
+
+                toggle.addEventListener('click', function(e){
+                    e.stopPropagation();
+                    setOpen(!dropdown.classList.contains('active'));
+                });
+
+                // Close when clicking outside
+                document.addEventListener('click', function(){ setOpen(false); });
+
+                // Close on Escape
+                document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
+            })();
+        </script>
     </header>
     <h1>About Us</h1>
     <main>

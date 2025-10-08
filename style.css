@@ -9,7 +9,11 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    margin-left: 0.5rem;
+    margin-left: 0; /* Ensure no margin */
+    padding-left: 0; /* Ensure no padding */
+    position: absolute;
+    left: 0;
+    top: 0;
     z-index: 101;
 }
 .hamburger span {
@@ -19,6 +23,7 @@
     background: #222;
     border-radius: 2px;
     transition: 0.3s;
+    border-width: 20px;
 }
 
 /* Dropdown menu styles */
@@ -27,7 +32,7 @@
     flex-direction: column;
     position: absolute;
     top: 60px; /* Adjust to match navbar height */
-    left: 0.5rem;
+    left: 0;
     background: #fff;
     border: 1px solid #ccc;
     min-width: 160px;
@@ -49,6 +54,70 @@
 /* Show dropdown when active */
 .dropdown-menu.active {
     display: flex;
+}
+/* Nav button (Shop) styles */
+.nav-button {
+    background: transparent;
+    border: none;
+    color: #222;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+}
+.nav-button:focus {
+    outline: 2px solid rgba(0,0,0,0.08);
+    outline-offset: 2px;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.nav-links a {
+    color: #222;
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+}
+.shop-item {
+    position: relative; /* needed to position dropdown */
+}
+
+/* Hamburger dropdown specific styles */
+.hamburger-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.hamburger-item a,
+.hamburger-item .nav-button {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: #222;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    text-align: left;
+    width: 100%;
+}
+.dropdown-menu.nested-menu {
+    display: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    box-shadow: none;
+    border: none;
+    background: #f9f9f9;
+    padding-left: 0.5rem;
+    border-radius: 4px;
+}
+.dropdown-menu.nested-menu.active {
+    display: block;
 }
 /* Removed hamburger menu, dropdown menu, and related nav styles */
 
@@ -96,7 +165,7 @@ h1 {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 0; /* Remove horizontal padding */
     position: relative;
     width: 100%;
 }
@@ -140,6 +209,17 @@ h1 {
 
 body {
     padding-top: 70px; /* Offset for fixed header */
-        background: #bdbcbc;
-        color: var(--white);
+    background: transparent; /* allow background video to show through */
+    color: var(--white);
+}
+
+/* Background video styling */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; /* sit behind header/content */
 }
